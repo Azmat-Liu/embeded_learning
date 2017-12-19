@@ -1,1 +1,2 @@
 bitbake 命令需要在build-wayland目录下使用
+linux下 cp软链接实际上copy的是软链接指向的文件而不是软链接本身
