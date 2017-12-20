@@ -2,5 +2,5 @@ bitbake [option] 命令需要在build-wayland目录下使用
 linux下 cp软链接实际上copy的是软链接指向的文件而不是软链接本身
 NXP 官网上.git里rel_imx_4.1.15_1.2.0_ga的BSP指的是1.0.0的长期支持的最新版本
 向内核打补丁时，假设当前目录为内核源码目录，patch文件在上一层目录可通过
-  patch -p1<../???.patch来为内核打补丁或还原patch -R -p1<../???.patch
+  patch -p1< ../???.patch来为内核打补丁或还原patch -R -p1< ../???.patch
  iMX6DQ ISL7998x MIPI CSI2 CVBS camera surround view patch for L4.1.15_1.2.0-GA BSP
