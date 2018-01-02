@@ -1,0 +1,2 @@
+查核心板原理图发现eMMC的接口为SD4-DATA?猜测此mmc设备对应为3，更改mfgtool中.cfg文件中mmc的值为3，烧录成功（mmc 为0时要么烧不进，要么出错）。
+新版本的mfgtool烧写的为.imx文件，而不是.bin文件了。
