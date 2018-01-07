@@ -3,6 +3,8 @@ linux下 cp软链接实际上copy的是软链接指向的文件而不是软链�
 NXP 官网上.git里rel_imx_4.1.15_1.2.0_ga的BSP指的是1.0.0的长期支持的最新版本
 向内核打补丁时，假设当前目录为内核源码目录，patch文件在上一层目录可通过
   patch -p1< ../???.patch来为内核打补丁或还原patch -R -p1< ../???.patch
+使用diff可以制作内核的补丁
+  diff -ruN [源] [目标] > [目标].patch
  iMX6DQ ISL7998x MIPI CSI2 CVBS camera surround view patch for L4.1.15_1.2.0-GA BSP
 yocto交叉编译工具链arm-poky-linux-gnueabi编译自己写的程序经常出现问题；改从linaro官网下载最新的交叉编译工具链后基本解决问题
 超级管理员模式下可以任意更改其他用户的密码（密码长度不受限制），可用来简化当前用户的密码su ;passwd name;type it~
