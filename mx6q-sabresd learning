@@ -12,3 +12,5 @@ yocto交叉编译工具链arm-poky-linux-gnueabi编译自己写的程序经常�
   int (*funs[])(void)={fun1,fun2,fun3};
     ret = funs[?]();
 使用gedit编辑文本时会默认保存一个副本，命名为name~,保存的内容为本次编辑前的文本，再次编辑保存时会更新（仅会保存一个副本，不会保存多个）
+u-boot的配置文件中增加#define CONFIG_BOOTARGS出现了倒数计时，并且#define CONFIG_EXTRA_ENV_SETTINGS之后添加的内容会在环境变量中出现，故增加对ethaddr
+的内容实现自动MAC地址的设置
