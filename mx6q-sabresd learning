@@ -1,4 +1,4 @@
-bitbake [option] 命令需要在build-wayland目录下使用
+﻿bitbake [option] 命令需要在build-wayland目录下使用
 linux下 cp软链接实际上copy的是软链接指向的文件而不是软链接本身
 NXP 官网上.git里rel_imx_4.1.15_1.2.0_ga的BSP指的是1.0.0的长期支持的最新版本
 向内核打补丁时，假设当前目录为内核源码目录，patch文件在上一层目录可通过
@@ -15,3 +15,4 @@ yocto交叉编译工具链arm-poky-linux-gnueabi编译自己写的程序经常�
 u-boot的配置文件中增加#define CONFIG_BOOTARGS出现了倒数计时，并且#define CONFIG_EXTRA_ENV_SETTINGS之后添加的内容会在环境变量中出现，故增加对ethaddr
 的内容实现自动MAC地址的设置
 sourceinsight中使用快捷键F5可以调到指定行
+新的测试
