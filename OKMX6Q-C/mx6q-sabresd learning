@@ -15,3 +15,5 @@ yocto交叉编译工具链arm-poky-linux-gnueabi编译自己写的程序经常�
 u-boot的配置文件中增加#define CONFIG_BOOTARGS出现了倒数计时，并且#define CONFIG_EXTRA_ENV_SETTINGS之后添加的内容会在环境变量中出现，故增加对ethaddr
 的内容实现自动MAC地址的设置
 sourceinsight中使用快捷键F5可以调到指定行
+使用Linux自带脚本可以将*.dtb在转换回**.dts(注名字可以不同)
+	<linux>/scripts/dtc/dtc -I dtb -O dts -o newname.dts arch/arm/boot/dts/srcname.dtb
