@@ -16,7 +16,10 @@ u-boot的配置文件中增加#define CONFIG_BOOTARGS出现了倒数计时，并
 的内容实现自动MAC地址的设置
 <<<<<<< HEAD:OKMX6Q-C/mx6q-sabresd learning
 sourceinsight中使用快捷键F5可以调到指定行
+<<<<<<< HEAD
 使用Linux自带脚本可以将*.dtb在转换回**.dts(注名字可以不同)
 	<linux>/scripts/dtc/dtc -I dtb -O dts -o newname.dts arch/arm/boot/dts/srcname.dtb
 =======
 >>>>>>> parent of e404a79... Update mx6q-sabresd learning:mx6q-sabresd learning
+=======
+>>>>>>> parent of b7b5fa1... Update
