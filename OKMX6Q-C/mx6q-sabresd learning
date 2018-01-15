@@ -23,3 +23,5 @@ sourceinsight中使用快捷键F5可以调到指定行
 >>>>>>> parent of e404a79... Update mx6q-sabresd learning:mx6q-sabresd learning
 =======
 >>>>>>> parent of b7b5fa1... Update
+ARM上的链接库文件路径不同，导致找不到文件，可以用gcc -static命令改用静态链接的方式编译：
+	arm-none-linux-gnueabi-gcc –o hello hello.c -static
