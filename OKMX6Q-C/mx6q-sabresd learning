@@ -21,3 +21,4 @@ ARM上的链接库文件路径不同，导致找不到文件，可以用gcc?-sta
 	arm-none-linux-gnueabi-gcc –o hello hello.c -static
 虚拟机内存只增不减，需要定期使用vmware-toolbars来清理空闲的内存(但由于D盘空余空间小于整个虚拟机的空间，故只能放到一个大的硬盘中shrink)
 不可使用写字板方式来编辑gitHub Desktop的中文内容（会出现中文乱码）！
+通过右键历史版本后点击revert this commit可以回退到该版本
