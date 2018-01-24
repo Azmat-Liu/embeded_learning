@@ -1,27 +1,28 @@
-ï»¿bitbake [option] å‘½ä»¤éœ€è¦åœ¨build-waylandç›®å½•ä¸‹ä½¿ç”¨
-linuxä¸‹ cpè½¯é“¾æŽ¥å®žé™…ä¸Šcopyçš„æ˜¯è½¯é“¾æŽ¥æŒ‡å‘çš„æ–‡ä»¶è€Œä¸æ˜¯è½¯é“¾æŽ¥æœ¬èº«
-NXP å®˜ç½‘ä¸Š.gité‡Œrel_imx_4.1.15_1.2.0_gaçš„BSPæŒ‡çš„æ˜¯1.0.0çš„é•¿æœŸæ”¯æŒçš„æœ€æ–°ç‰ˆæœ¬
-å‘å†…æ ¸æ‰“è¡¥ä¸æ—¶ï¼Œå‡è®¾å½“å‰ç›®å½•ä¸ºå†…æ ¸æºç ç›®å½•ï¼Œpatchæ–‡ä»¶åœ¨ä¸Šä¸€å±‚ç›®å½•å¯é€šè¿‡
-  patch -p1< ../???.patchæ¥ä¸ºå†…æ ¸æ‰“è¡¥ä¸æˆ–è¿˜åŽŸpatch -R -p1< ../???.patch
-ä½¿ç”¨diffå¯ä»¥åˆ¶ä½œå†…æ ¸çš„è¡¥ä¸
-  diff -ruN [æº] [ç›®æ ‡] > [ç›®æ ‡].patch
+bitbake [option] ÃüÁîÐèÒªÔÚbuild-waylandÄ¿Â¼ÏÂÊ¹ÓÃ
+linuxÏÂ cpÈíÁ´½ÓÊµ¼ÊÉÏcopyµÄÊÇÈíÁ´½ÓÖ¸ÏòµÄÎÄ¼þ¶ø²»ÊÇÈíÁ´½Ó±¾Éí
+NXP ¹ÙÍøÉÏ.gitÀïrel_imx_4.1.15_1.2.0_gaµÄBSPÖ¸µÄÊÇ1.0.0µÄ³¤ÆÚÖ§³ÖµÄ×îÐÂ°æ±¾
+ÏòÄÚºË´ò²¹¶¡Ê±£¬¼ÙÉèµ±Ç°Ä¿Â¼ÎªÄÚºËÔ´ÂëÄ¿Â¼£¬patchÎÄ¼þÔÚÉÏÒ»²ãÄ¿Â¼¿ÉÍ¨¹ý
+  patch -p1< ../???.patchÀ´ÎªÄÚºË´ò²¹¶¡»ò»¹Ô­patch -R -p1< ../???.patch
+Ê¹ÓÃdiff¿ÉÒÔÖÆ×÷ÄÚºËµÄ²¹¶¡
+  diff -ruN [Ô´] [Ä¿±ê] > [Ä¿±ê].patch
  iMX6DQ ISL7998x MIPI CSI2 CVBS camera surround view patch for L4.1.15_1.2.0-GA BSP
-yoctoäº¤å‰ç¼–è¯‘å·¥å…·é“¾arm-poky-linux-gnueabiç¼–è¯‘è‡ªå·±å†™çš„ç¨‹åºç»å¸¸å‡ºçŽ°é—®é¢˜ï¼›æ”¹ä»Žlinaroå®˜ç½‘ä¸‹è½½æœ€æ–°çš„äº¤å‰ç¼–è¯‘å·¥å…·é“¾åŽåŸºæœ¬è§£å†³é—®é¢˜
-è¶…çº§ç®¡ç†å‘˜æ¨¡å¼ä¸‹å¯ä»¥ä»»æ„æ›´æ”¹å…¶ä»–ç”¨æˆ·çš„å¯†ç ï¼ˆå¯†ç é•¿åº¦ä¸å—é™åˆ¶ï¼‰ï¼Œå¯ç”¨æ¥ç®€åŒ–å½“å‰ç”¨æˆ·çš„å¯†ç su ;passwd name;type it~
-å°†åˆå§‹åŒ–å‡½æ•°æ”¾å…¥ä¸€ä¸ªå‡½æ•°è½¬æ¢è¡¨æ˜¯ä¸€ä¸ªå¥½ä¸»æ„ï¼
+yocto½»²æ±àÒë¹¤¾ßÁ´arm-poky-linux-gnueabi±àÒë×Ô¼ºÐ´µÄ³ÌÐò¾­³£³öÏÖÎÊÌâ£»¸Ä´Ólinaro¹ÙÍøÏÂÔØ×îÐÂµÄ½»²æ±àÒë¹¤¾ßÁ´ºó»ù±¾½â¾öÎÊÌâ
+³¬¼¶¹ÜÀíÔ±Ä£Ê½ÏÂ¿ÉÒÔÈÎÒâ¸ü¸ÄÆäËûÓÃ»§µÄÃÜÂë£¨ÃÜÂë³¤¶È²»ÊÜÏÞÖÆ£©£¬¿ÉÓÃÀ´¼ò»¯µ±Ç°ÓÃ»§µÄÃÜÂësu ;passwd name;type it~
+½«³õÊ¼»¯º¯Êý·ÅÈëÒ»¸öº¯Êý×ª»»±íÊÇÒ»¸öºÃÖ÷Òâ£¡
   int (*funs[])(void)={fun1,fun2,fun3};
     ret = funs[?]();
-ä½¿ç”¨geditç¼–è¾‘æ–‡æœ¬æ—¶ä¼šé»˜è®¤ä¿å­˜ä¸€ä¸ªå‰¯æœ¬ï¼Œå‘½åä¸ºname~,ä¿å­˜çš„å†…å®¹ä¸ºæœ¬æ¬¡ç¼–è¾‘å‰çš„æ–‡æœ¬ï¼Œå†æ¬¡ç¼–è¾‘ä¿å­˜æ—¶ä¼šæ›´æ–°ï¼ˆä»…ä¼šä¿å­˜ä¸€ä¸ªå‰¯æœ¬ï¼Œä¸ä¼šä¿å­˜å¤šä¸ªï¼‰
-u-bootçš„é…ç½®æ–‡ä»¶ä¸­å¢žåŠ #define CONFIG_BOOTARGSå‡ºçŽ°äº†å€’æ•°è®¡æ—¶ï¼Œå¹¶ä¸”#define CONFIG_EXTRA_ENV_SETTINGSä¹‹åŽæ·»åŠ çš„å†…å®¹ä¼šåœ¨çŽ¯å¢ƒå˜é‡ä¸­å‡ºçŽ°ï¼Œæ•…å¢žåŠ å¯¹ethaddr
-çš„å†…å®¹å®žçŽ°è‡ªåŠ¨MACåœ°å€çš„è®¾ç½®
+Ê¹ÓÃgedit±à¼­ÎÄ±¾Ê±»áÄ¬ÈÏ±£´æÒ»¸ö¸±±¾£¬ÃüÃûÎªname~,±£´æµÄÄÚÈÝÎª±¾´Î±à¼­Ç°µÄÎÄ±¾£¬ÔÙ´Î±à¼­±£´æÊ±»á¸üÐÂ£¨½ö»á±£´æÒ»¸ö¸±±¾£¬²»»á±£´æ¶à¸ö£©
+u-bootµÄÅäÖÃÎÄ¼þÖÐÔö¼Ó#define CONFIG_BOOTARGS³öÏÖÁËµ¹Êý¼ÆÊ±£¬²¢ÇÒ#define CONFIG_EXTRA_ENV_SETTINGSÖ®ºóÌí¼ÓµÄÄÚÈÝ»áÔÚ»·¾³±äÁ¿ÖÐ³öÏÖ£¬¹ÊÔö¼Ó¶Ôethaddr
+µÄÄÚÈÝÊµÏÖ×Ô¶¯MACµØÖ·µÄÉèÖÃ
 <<<<<<< HEAD:OKMX6Q-C/mx6q-sabresd learning
-sourceinsightä¸­ä½¿ç”¨å¿«æ·é”®F5å¯ä»¥è°ƒåˆ°æŒ‡å®šè¡Œ
+sourceinsightÖÐÊ¹ÓÃ¿ì½Ý¼üF5¿ÉÒÔµ÷µ½Ö¸¶¨ÐÐ
 <<<<<<< HEAD
-ä½¿ç”¨Linuxè‡ªå¸¦è„šæœ¬å¯ä»¥å°†*.dtbåœ¨è½¬æ¢å›ž**.dts(æ³¨åå­—å¯ä»¥ä¸åŒ)
+Ê¹ÓÃLinux×Ô´ø½Å±¾¿ÉÒÔ½«*.dtbÔÚ×ª»»»Ø**.dts(×¢Ãû×Ö¿ÉÒÔ²»Í¬)
 	<linux>/scripts/dtc/dtc -I dtb -O dts -o newname.dts arch/arm/boot/dts/srcname.dtb
 =======
 >>>>>>> parent of e404a79... Update mx6q-sabresd learning:mx6q-sabresd learning
 =======
 >>>>>>> parent of b7b5fa1... Update
-ARMä¸Šçš„é“¾æŽ¥åº“æ–‡ä»¶è·¯å¾„ä¸åŒï¼Œå¯¼è‡´æ‰¾ä¸åˆ°æ–‡ä»¶ï¼Œå¯ä»¥ç”¨gccÂ -staticå‘½ä»¤æ”¹ç”¨é™æ€é“¾æŽ¥çš„æ–¹å¼ç¼–è¯‘ï¼š
-	arm-none-linux-gnueabi-gcc â€“o hello hello.c -static
+ARMÉÏµÄÁ´½Ó¿âÎÄ¼þÂ·¾¶²»Í¬£¬µ¼ÖÂÕÒ²»µ½ÎÄ¼þ£¬¿ÉÒÔÓÃgcc?-staticÃüÁî¸ÄÓÃ¾²Ì¬Á´½ÓµÄ·½Ê½±àÒë£º
+	arm-none-linux-gnueabi-gcc ¨Co hello hello.c -static
+ÐéÄâ»úÄÚ´æÖ»Ôö²»¼õ£¬ÐèÒª¶¨ÆÚÊ¹ÓÃvmware-toolbarsÀ´ÇåÀí¿ÕÏÐµÄÄÚ´æ(µ«ÓÉÓÚDÅÌ¿ÕÓà¿Õ¼äÐ¡ÓÚÕû¸öÐéÄâ»úµÄ¿Õ¼ä£¬¹ÊÖ»ÄÜ·Åµ½Ò»¸ö´óµÄÓ²ÅÌÖÐshrink)
