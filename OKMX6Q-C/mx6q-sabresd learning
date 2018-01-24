@@ -1,4 +1,4 @@
-bitbake [option] 命令需要在build-wayland目录下使用
+﻿bitbake [option] 命令需要在build-wayland目录下使用
 linux下 cp软链接实际上copy的是软链接指向的文件而不是软链接本身
 NXP 官网上.git里rel_imx_4.1.15_1.2.0_ga的BSP指的是1.0.0的长期支持的最新版本
 向内核打补丁时，假设当前目录为内核源码目录，patch文件在上一层目录可通过
@@ -20,3 +20,4 @@ sourceinsight中使用快捷键F5可以调到指定行
 ARM上的链接库文件路径不同，导致找不到文件，可以用gcc?-static命令改用静态链接的方式编译：
 	arm-none-linux-gnueabi-gcc –o hello hello.c -static
 虚拟机内存只增不减，需要定期使用vmware-toolbars来清理空闲的内存(但由于D盘空余空间小于整个虚拟机的空间，故只能放到一个大的硬盘中shrink)
+不可使用写字板方式来编辑gitHub Desktop的中文内容（会出现中文乱码）！
