@@ -1,7 +1,0 @@
-<SendList m_dwCycles="1">
-    <tagSendUint iInterval="10" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="connect" obj="0D0100000000000000000000080101000100000000000000" />
-    <tagSendUint iInterval="10" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="MTA1" obj="0D0100000000000000000000080201000000003C00000000" />
-    <tagSendUint iInterval="10" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="UPLOAD1" obj="0D0100003C0000003C000000080401050000000000657273" />
-    <tagSendUint iInterval="10" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="MAT2" obj="0D0100000000000000000000080202000000003C05000000" />
-    <tagSendUint iInterval="10" iTimes="1" len="1" bIncreaseID="0" bIncreaseData="0" szname="UPLOAD2" obj="0D0100003C0000003C000000080402050000000000657273" />
-</SendList>
