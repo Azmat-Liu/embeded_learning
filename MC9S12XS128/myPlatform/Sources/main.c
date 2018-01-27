@@ -14,7 +14,7 @@ void main(void)
 	for(;;)
 	{
 	  _FEED_COP();       //喂狗
-	  //ERRNO = early_selfDiagnose();   //早期自检
+	  ERRNO = early_selfDiagnose();   //早期自检
 	  reportError(ERRNO);             //错误报告
 	  while(ERRNO == TCU_NONEERR)     //若系统正常
 	  {
