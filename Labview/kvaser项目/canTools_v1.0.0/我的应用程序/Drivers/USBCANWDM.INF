@@ -1,0 +1,143 @@
+; USBCANWDM.INF
+; WDM/DLL for Windows 98/Me/2000/2003/2008/XP/Vista/7/64bit XP/2003/2008/Vista/7
+
+[Version]
+Signature = "$Chicago$"
+Class     = %DeviceClassName%
+ClassGuid ={AA87D8EA-E78F-466d-9040-02254A61E309}
+Provider  = %GCGD%
+DriverVer = 07/17/2014, 5.2.2014.05
+CatalogFile=USBCANWDM.cat
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_0C66&PID_000C
+
+
+
+[ClassInstall32]
+Addreg = GCGReg
+
+[ClassInstall]
+Addreg = GCGReg
+
+[GCGReg]
+HKR, , , 0, %DeviceClassName%
+HKR, , Icon, , -5
+HKR, , NoInstallClass, , 1
+
+[Manufacturer]
+%GCGD% = GCGD,NT,NTamd64,NTia64
+
+[GCGD]
+%USBCAN.DeviceDesc% = USBCAN.Install, USB\VID_0C66&PID_000C
+
+[GCGD.NT]
+%USBCAN.DeviceDesc% = USBCAN.Install, USB\VID_0C66&PID_000C
+
+[GCGD.NTamd64]
+%USBCAN.DeviceDesc% = USBCAN.Install.NTamd64, USB\VID_0C66&PID_000C
+
+[GCGD.NTia64]
+%USBCAN.DeviceDesc% = USBCAN.Install.NTamd64, USB\VID_0C66&PID_000C
+
+[GCGD.NTia64]
+;%USBCAN.DeviceDesc% = USBCAN.Install.NTia64, USB\VID_0C66&PID_000C
+%USBCAN.DeviceDesc% = USBCAN.Install.NTamd64, USB\VID_0C66&PID_000C
+
+[USBCAN.Install]
+CopyFiles = USBCAN.CopyFiles.SYS, USBCAN.CopyFiles.DLL,ECanUsb.CopyFiles.DLL
+AddReg    = USBCAN.9X.AddReg, USBCAN.AddReg
+
+[USBCAN.Install.NT]
+CopyFiles = USBCAN.CopyFiles.SYS,USBCAN.CopyFiles.DLL,ECanUsb.CopyFiles.DLL
+AddReg    = USBCAN.NT.AddReg,USBCAN.AddReg
+
+[USBCAN.Install.NTamd64]
+CopyFiles = USBCAN.CopyFilesA64.SYS,USBCAN.CopyFilesA64.DLL,ECanUsb.CopyFilesA64.DLL
+AddReg    = USBCAN.NT.AddReg, USBCAN.AddReg
+
+[USBCAN.CopyFiles.SYS]
+USBCANWDM.SYS, , , 2
+
+[USBCAN.CopyFilesA64.SYS]
+USBCANW64.SYS, , , 2
+
+[USBCAN.CopyFiles.DLL]
+CHUSBDLL.DLL, , , 2
+
+[USBCAN.CopyFilesA64.DLL]
+CHUSBDLL.DLL, , , 2
+
+
+[ECanUsb.CopyFilesA64.DLL]
+ECanUsb.dll, , , 2
+
+[ECanUsb.CopyFiles.DLL]
+ECanUsb.dll, , , 2
+
+
+[USBCAN.9X.AddReg]
+HKR, , DevLoader, , *NTKERN
+HKR, , NTMPDriver, , USBCANWDM.SYS
+
+[USBCAN.NT.AddReg]
+
+
+[USBCAN.AddReg]
+HKLM, SOFTWARE\GCGD\IC\GCUSBCAN, WDM, 0x00010001, 0x00000025
+HKLM, SOFTWARE\GCGD\IC\GCUSBCAN, DLL, 0x00010001, 0x00000022
+HKLM, SOFTWARE\GCGD\IC\GCUSBCAN, Function, , "USB slave"
+
+[USBCAN.Install.NT.Services]
+AddService = GCUSBCAN, 2, USBCAN.Service
+
+[USBCAN.Install.NTamd64.Services]
+AddService = GCUSBCAN_A64, 2, USBCAN.ServiceA64
+
+
+[USBCAN.Service]
+DisplayName   = "GC USBCAN"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\USBCANWDM.SYS
+
+[USBCAN.ServiceA64]
+DisplayName   = "GC USBCAN_A64"
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\USBCANW64.SYS
+
+
+[DestinationDirs]
+DefaultDestDir      = 10, System32\Drivers
+USBCAN.CopyFiles.DLL = 11
+ECanUsb.CopyFiles.DLL=11
+USBCAN.CopyFilesA64.DLL = 10,Syswow64
+USBCAN.CopyFiles.SYS = 10, System32\Drivers
+USBCAN.CopyFilesA64.SYS = 10, System32\Drivers
+ECanUsb.CopyFilesA64.DLL = 10,Syswow64
+
+
+
+[SourceDisksFiles]
+USBCANWDM.SYS  = 1
+CHUSBDLL.DLL  = 1
+USBCANW64.SYS  = 1
+ECanUsb.dll  = 1
+
+
+[SourceDisksNames]
+1 = %DISK_NAME%, USBCANWDM.SYS, ,
+
+[SourceDisksNames.amd64]
+1 = %DISK_NAME%, USBCANW64.SYS, ,
+
+
+[Strings]
+
+GCGD      = "GC Tech"
+USBCAN.DeviceDesc = "GC-Tech USBCAN Device"
+DISK_NAME = "USBCAN Installation Disk"
+DeviceClassName="USB CAN"

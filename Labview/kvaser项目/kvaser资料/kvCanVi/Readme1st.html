@@ -1,0 +1,46 @@
+<html>
+   <head>
+   </head>
+   <body>
+      <h1>KVaser LabView CAN VIs</h1>
+      
+      <p>The KVaser LabView CAN VIs implement the LabView interface to the
+      KVaser CAN runtime library.  These VIs provide the same functionality
+      as is present in the library.  The VIs are all named kvCanXXX, where "XXX"
+      is the name of a CAN library function.
+      
+      <h2>Requirements</h2>
+      <p>The VIs require the CANLIB SDK.  They use functions defined in the
+      CANLIB DLL (CanLib32.dll), which must be present in the execution path for the VIs to
+      run.  The execution path is the current working directory, a directory
+      specified in the PATH environment variable, or the standard Windows System32
+      directory.  The CANLIB SDK install
+      program automatically installs the DLL into the path by copying it into
+      the standard windows System32 directory.
+      
+      <h2>Installation</h2>
+      <ol>
+         <li>Install LabView
+         <li>Install the KVaser CANLIB SDK.
+         <li>Install the KVaser LabView CAN VIs in any directory.
+      </ol>
+      
+      <h2>Usage</h2>
+      <ol>
+         <li>The VIs are used like any LabView VI.  They may be installed in any
+         directory.
+      
+         <li>Read the CANLIB SDK documentation, which lists the available functions
+         and provides examples on their usage.
+      
+         <li>Open the kvCanTree.vi VI.  It contains additional details on the
+         VIs and their usage.
+         
+         <li>Look at the kvCanTree.vi diagram for a list of all VIs.
+         
+         <li>Look at the kvCanExample1.vi.  This VI is a VERY simple example
+         that writes a single message to the CAN bus, and reads a single message
+         from the bus.
+      </ol>      
+   </body>
+</html>
