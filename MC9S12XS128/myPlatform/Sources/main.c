@@ -1,7 +1,7 @@
 #include "includes.h"
 
 
-word heartbeat;  //程序运行时循环相加
+word jiffies;  //程序运行时循环相加
   
 /***********************************************************
 *                   main函数（函数主体）                 
@@ -18,7 +18,7 @@ void main(void)
 	  reportError(ERRNO);             //错误报告
 	  while(ERRNO == TCU_NONEERR)     //若系统正常
 	  {
-	    heartbeat++;
+	    jiffies++;
       _FEED_COP();     //喂狗
       
       schUpdate();     //换挡任务调度

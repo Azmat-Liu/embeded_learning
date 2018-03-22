@@ -17,6 +17,7 @@
    #include "PID.h"
    #include "PWM.h"
    #include "SCI.h"
+   #include "IIC.h"
    #include "SysInit.h"
    #include "Schedule.h"
    #include "PID.h"
