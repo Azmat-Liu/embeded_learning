@@ -12,6 +12,7 @@ int ERRNO;   //错误码(关键变量)
 //*初始化诊断函数
 byte early_selfDiagnose(void) 
 {
+  #if 0
   speed = readSpeed();  //读取转速
   adValue = atdChannel(1);  //读取ad值
   if(speed < 0 || speed > 1000) {
@@ -28,6 +29,8 @@ byte early_selfDiagnose(void)
   }
   //if(CANACCESS)   can连接异常(由中断来读取)
     //return TCU_COMMUERR;
+  #endif
+  
   return TCU_NONEERR;
 }
 

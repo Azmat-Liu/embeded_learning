@@ -40,8 +40,8 @@ Entry point: 0xC000 (_Startup)
 _startupData is allocated at 0xC00F and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x2400     670
-  _Copy    *toCopyDownBeg 0xC350
+  _Range   pZeroOut       0x2400     668
+  _Copy    *toCopyDownBeg 0xC300
 } _startupData;
 
 *********************************************************************************************
@@ -50,10 +50,10 @@ Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
 .init                             15     R     0xC000     0xC00E   ROM_C000
 .startData                        14     R     0xC00F     0xC01C   ROM_C000
-.rodata1                         169     R     0xC01D     0xC0C5   ROM_C000
-NON_BANKED                       650     R     0xC0C6     0xC34F   ROM_C000
-.copy                            324     R     0xC350     0xC493   ROM_C000
-.text                           5052     R   0xFE8000   0xFE93BB   PAGE_FE
+.rodata1                          89     R     0xC01D     0xC075   ROM_C000
+NON_BANKED                       650     R     0xC076     0xC2FF   ROM_C000
+.copy                            324     R     0xC300     0xC443   ROM_C000
+.text                           4987     R   0xFE8000   0xFE937A   PAGE_FE
 .stack                          1024   R/W     0x2000     0x23FF   RAM
 .data                             58   R/W     0x2400     0x2439   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -355,12 +355,12 @@ NON_BANKED                       650     R     0xC0C6     0xC34F   ROM_C000
 .abs_section_ffde                  2     R     0xFFDE     0xFFDF   .absSeg296
 .abs_section_ffd6                  2     R     0xFFD6     0xFFD7   .absSeg297
 .bss                             296   R/W     0x243A     0x2561   RAM
-.common                          316   R/W     0x2562     0x269D   RAM
+.common                          314   R/W     0x2562     0x269B   RAM
 .vectSeg298_vect                   2     R     0xFFFE     0xFFFF   .vectSeg298
 
 Summary of section sizes per section type:
-READ_ONLY (R):        185E (dec:     6238)
-READ_WRITE (R/W):      69E (dec:     1694)
+READ_ONLY (R):        17CD (dec:     6093)
+READ_WRITE (R/W):      69C (dec:     1692)
 NO_INIT (N/I):         268 (dec:      616)
 
 *********************************************************************************************
@@ -682,14 +682,14 @@ MODULE:                 -- Start12.c.o --
      __SEG_END_SSTACK                          2400       0       0       1               
 MODULE:                 -- rtshc12.c.o (ansixbi.lib) --
 - PROCEDURES:
-     _LSHL                                     C0C6       D      13       1   NON_BANKED  
-     _LSHRU                                    C0D3       E      14       4   NON_BANKED  
-     _LCMP                                     C0E1       A      10       6   NON_BANKED  
-     _LINC                                     C0EB       5       5       1   NON_BANKED  
-     _lDivMod                                  C0F0      B9     185       1   NON_BANKED  
-     _LDIVU                                    C1A9       E      14       3   NON_BANKED  
-     _COPY                                     C1B7       8       8       3   NON_BANKED  
-     _CASE_CHECKED_BYTE                        C1BF      14      20       2   NON_BANKED  
+     _LSHL                                     C076       D      13       1   NON_BANKED  
+     _LSHRU                                    C083       E      14       4   NON_BANKED  
+     _LCMP                                     C091       A      10       6   NON_BANKED  
+     _LINC                                     C09B       5       5       1   NON_BANKED  
+     _lDivMod                                  C0A0      B9     185       1   NON_BANKED  
+     _LDIVU                                    C159       E      14       3   NON_BANKED  
+     _COPY                                     C167       8       8       3   NON_BANKED  
+     _CASE_CHECKED_BYTE                        C16F      14      20       2   NON_BANKED  
 - VARIABLES:
 MODULE:                 -- D_Flash.c.o --
 - PROCEDURES:
@@ -734,8 +734,8 @@ MODULE:                 -- CAN.c.o --
      CANMsg_Update                           FE8AFC      19      25       2   .text       
      canMessageWrite                         FE8B15      39      57       2   .text       
      protocol                                FE8B4E      4D      77       2   .text       
-     CAN_receive                               C1D3      34      52       1   NON_BANKED  
-     CAN_transmit                              C207      14      20       1   NON_BANKED  
+     CAN_receive                               C183      34      52       1   NON_BANKED  
+     CAN_transmit                              C1B7      14      20       1   NON_BANKED  
 - VARIABLES:
      canBusWarningCount                        243A       2       2       3   .bss        
      _Vector_38                                FFB2       2       2       0   .abs_section_ffb2
@@ -766,7 +766,7 @@ MODULE:                 -- ExtCCP.c.o --
 MODULE:                 -- PIT.c.o --
 - PROCEDURES:
      InitPIT                                 FE8D11      20      32       2   .text       
-     PIT0                                      C21B       D      13       1   NON_BANKED  
+     PIT0                                      C1CB       D      13       1   NON_BANKED  
 - VARIABLES:
      _Vector_66                                FF7A       2       2       0   .abs_section_ff7a
      pitHeartbeat                              2605       2       2       1   .common     
@@ -785,9 +785,9 @@ MODULE:                 -- DAQ.c.o --
 MODULE:                 -- ECT.c.o --
 - PROCEDURES:
      InitECT                                 FE8D62      31      49       2   .text       
-     readSpeed                               FE8D93     126     294       4   .text       
-     TC0_Capture                               C228      7A     122       1   NON_BANKED  
-     TimeOverFlow                              C2A2      2E      46       1   NON_BANKED  
+     readSpeed                               FE8D93     126     294       2   .text       
+     TC0_Capture                               C1D8      7A     122       1   NON_BANKED  
+     TimeOverFlow                              C252      2E      46       1   NON_BANKED  
 - VARIABLES:
      aveValue                                  253F       4       4       3   .bss        
      index.3                                   2543       2       2       4   .bss        
@@ -799,7 +799,7 @@ MODULE:                 -- ECT.c.o --
 MODULE:                 -- ATD.c.o --
 - PROCEDURES:
      InitATD                                 FE8EB9      17      23       2   .text       
-     atdChannel                              FE8ED0      DC     220       8   .text       
+     atdChannel                              FE8ED0      DC     220       6   .text       
 - VARIABLES:
 MODULE:                 -- PID.c.o --
 - PROCEDURES:
@@ -819,8 +819,8 @@ MODULE:                 -- SCI.c.o --
      InitSCI0                                FE90A5       C      12       2   .text       
      sendSCI0                                FE90B1       9       9       2   .text       
      receiveSCI0                             FE90BA       7       7       2   .text       
-     printk                                  FE90C1      15      21       8   .text       
-     receive_data                              C2D0      80     128       1   NON_BANKED  
+     printk                                  FE90C1      15      21       6   .text       
+     receive_data                              C280      80     128       1   NON_BANKED  
 - VARIABLES:
      pcmd                                      2410       2       2       3   .data       
      uart_cmdacc                               255D       1       1       4   .bss        
@@ -864,20 +864,16 @@ MODULE:                 -- Units.c.o --
      DFlashmemorycopy                        FE9328      4F      79       2   .text       
      sciCmd_Decode                           FE9377       1       1       2   .text       
 - VARIABLES:
-     speed                                     267B       2       2       5   .common     
-     adValue                                   267D       2       2       6   .common     
-     adVoltage                                 267F       2       2       1   .common     
-     adTarget                                  2681       2       2       2   .common     
-     Trans                                     2683      19      25       5   .common     
+     speed                                     267B       2       2       3   .common     
+     adValue                                   267D       2       2       4   .common     
+     adTarget                                  267F       2       2       2   .common     
+     Trans                                     2681      19      25       5   .common     
 MODULE:                 -- Diag.c.o --
 - PROCEDURES:
-     early_selfDiagnose                      FE9378      43      67       2   .text       
-     reportError                             FE93BB       1       1       2   .text       
+     early_selfDiagnose                      FE9378       2       2       2   .text       
+     reportError                             FE937A       1       1       2   .text       
 - VARIABLES:
-     STRING.please.check.speed.s.1             C076      1A      26       1   .rodata1    
-     STRING.please.check.gear.se.2             C090      19      25       1   .rodata1    
-     STRING.battery.voltage.too..3             C0A9      1D      29       1   .rodata1    
-     ERRNO                                     269C       2       2       3   .common     
+     ERRNO                                     269A       2       2       3   .common     
 
 *********************************************************************************************
 MODULE STATISTIC
@@ -901,8 +897,8 @@ MODULE STATISTIC
   SysInit.c.o                                  0    200     34
   Schedule.c.o                                60    257      0
   MotorCtl.c.o                                 3    110     55
-  Units.c.o                                   33    107      0
-  Diag.c.o                                     2     68     80
+  Units.c.o                                   31    107      0
+  Diag.c.o                                     2      3      0
   other                                     1024     16    324
 
 *********************************************************************************************
@@ -934,8 +930,6 @@ SECTION: ".init"
 SECTION: ".rodata1"
   STRING.System.Initializatio.1 STRING.out.of.range...1 
   STRING.duty.out.of.range...2 STRING.duty.out.of.range...3 
-  STRING.please.check.speed.s.1 STRING.please.check.gear.se.2 
-  STRING.battery.voltage.too..3 
 SECTION: "NON_BANKED"
   _LSHL _LSHRU _LCMP _LINC _lDivMod _LDIVU _COPY _CASE_CHECKED_BYTE 
   CAN_receive CAN_transmit PIT0 TC0_Capture TimeOverFlow receive_data 
@@ -1523,7 +1517,7 @@ SECTION: ".abs_section_356"
   _PITCNT3 
 SECTION: ".common"
   jiffies ccp msg_send msg_get canBusOffTimeCnt TPS Battery_Soc pitHeartbeat 
-  Pca pid uart Sch pidError duty speed adValue adVoltage adTarget Trans ERRNO 
+  Pca pid uart Sch pidError duty speed adValue adTarget Trans ERRNO 
 SECTION: ".abs_section_ffb2"
   _Vector_38 
 SECTION: ".abs_section_ffb0"
@@ -1874,35 +1868,31 @@ OBJECT LIST SORTED BY ADDRESS
      Sch                                       2667      11      17      20   .common     
      pidError                                  2678       2       2       2   .common     
      duty                                      267A       1       1       1   .common     
-     speed                                     267B       2       2       5   .common     
-     adValue                                   267D       2       2       6   .common     
-     adVoltage                                 267F       2       2       1   .common     
-     adTarget                                  2681       2       2       2   .common     
-     Trans                                     2683      19      25       5   .common     
-     ERRNO                                     269C       2       2       3   .common     
+     speed                                     267B       2       2       3   .common     
+     adValue                                   267D       2       2       4   .common     
+     adTarget                                  267F       2       2       2   .common     
+     Trans                                     2681      19      25       5   .common     
+     ERRNO                                     269A       2       2       3   .common     
      ccpCalBuffer                              3C00     100     256      17   .abs_section_3c00
      _Startup                                  C000       F      15       0   .init       
      STRING.System.Initializatio.1             C01D      22      34       1   .rodata1    
      STRING.out.of.range...1                   C03F       F      15       1   .rodata1    
      STRING.duty.out.of.range...2              C04E      14      20       1   .rodata1    
      STRING.duty.out.of.range...3              C062      14      20       1   .rodata1    
-     STRING.please.check.speed.s.1             C076      1A      26       1   .rodata1    
-     STRING.please.check.gear.se.2             C090      19      25       1   .rodata1    
-     STRING.battery.voltage.too..3             C0A9      1D      29       1   .rodata1    
-     _LSHL                                     C0C6       D      13       1   NON_BANKED  
-     _LSHRU                                    C0D3       E      14       4   NON_BANKED  
-     _LCMP                                     C0E1       A      10       6   NON_BANKED  
-     _LINC                                     C0EB       5       5       1   NON_BANKED  
-     _lDivMod                                  C0F0      B9     185       1   NON_BANKED  
-     _LDIVU                                    C1A9       E      14       3   NON_BANKED  
-     _COPY                                     C1B7       8       8       3   NON_BANKED  
-     _CASE_CHECKED_BYTE                        C1BF      14      20       2   NON_BANKED  
-     CAN_receive                               C1D3      34      52       1   NON_BANKED  
-     CAN_transmit                              C207      14      20       1   NON_BANKED  
-     PIT0                                      C21B       D      13       1   NON_BANKED  
-     TC0_Capture                               C228      7A     122       1   NON_BANKED  
-     TimeOverFlow                              C2A2      2E      46       1   NON_BANKED  
-     receive_data                              C2D0      80     128       1   NON_BANKED  
+     _LSHL                                     C076       D      13       1   NON_BANKED  
+     _LSHRU                                    C083       E      14       4   NON_BANKED  
+     _LCMP                                     C091       A      10       6   NON_BANKED  
+     _LINC                                     C09B       5       5       1   NON_BANKED  
+     _lDivMod                                  C0A0      B9     185       1   NON_BANKED  
+     _LDIVU                                    C159       E      14       3   NON_BANKED  
+     _COPY                                     C167       8       8       3   NON_BANKED  
+     _CASE_CHECKED_BYTE                        C16F      14      20       2   NON_BANKED  
+     CAN_receive                               C183      34      52       1   NON_BANKED  
+     CAN_transmit                              C1B7      14      20       1   NON_BANKED  
+     PIT0                                      C1CB       D      13       1   NON_BANKED  
+     TC0_Capture                               C1D8      7A     122       1   NON_BANKED  
+     TimeOverFlow                              C252      2E      46       1   NON_BANKED  
+     receive_data                              C280      80     128       1   NON_BANKED  
      _Vector_66                                FF7A       2       2       0   .abs_section_ff7a
      _Vector_39                                FFB0       2       2       0   .abs_section_ffb0
      _Vector_38                                FFB2       2       2       0   .abs_section_ffb2
@@ -1958,9 +1948,9 @@ OBJECT LIST SORTED BY ADDRESS
      InitPIT                                 FE8D11      20      32       2   .text       
      ccpDaqOdtInit                           FE8D31      31      49       2   .text       
      InitECT                                 FE8D62      31      49       2   .text       
-     readSpeed                               FE8D93     126     294       4   .text       
+     readSpeed                               FE8D93     126     294       2   .text       
      InitATD                                 FE8EB9      17      23       2   .text       
-     atdChannel                              FE8ED0      DC     220       8   .text       
+     atdChannel                              FE8ED0      DC     220       6   .text       
      do_pidCalc                              FE8FAC      45      69       2   .text       
      pidInit                                 FE8FF1      27      39       2   .text       
      pidCalc                                 FE9018      31      49       2   .text       
@@ -1970,7 +1960,7 @@ OBJECT LIST SORTED BY ADDRESS
      InitSCI0                                FE90A5       C      12       2   .text       
      sendSCI0                                FE90B1       9       9       2   .text       
      receiveSCI0                             FE90BA       7       7       2   .text       
-     printk                                  FE90C1      15      21       8   .text       
+     printk                                  FE90C1      15      21       6   .text       
      InitPLL                                 FE90D6      1D      29       2   .text       
      modulesInit                             FE90F3      22      34       2   .text       
      gpioInit                                FE9115      15      21       2   .text       
@@ -1983,8 +1973,8 @@ OBJECT LIST SORTED BY ADDRESS
      memorycopy                              FE930D      1B      27       4   .text       
      DFlashmemorycopy                        FE9328      4F      79       2   .text       
      sciCmd_Decode                           FE9377       1       1       2   .text       
-     early_selfDiagnose                      FE9378      43      67       2   .text       
-     reportError                             FE93BB       1       1       2   .text       
+     early_selfDiagnose                      FE9378       2       2       2   .text       
+     reportError                             FE937A       1       1       2   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -2005,7 +1995,7 @@ ExtCCP.c.o:
 PID.c.o:
   pidSetPara 
 Units.c.o:
-  getTorqFromTab stateCheck 
+  getTorqFromTab ask4operateCondition 
 NOT USED VARIABLES
 rtshc12.c.o (ansixbi.lib):
   _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
@@ -2015,66 +2005,66 @@ ExtCCP.c.o:
   Stamp1 Stamp2 
 Units.c.o:
   Gear1_DefaTorqTab Gear1_TorqLimitTab Gear2_DefaTorqTab Gear2_TorqLimitTab 
-  ccptest m_speed m_torque m_mode m_brake state 
+  ccptest adVoltage m_speed m_torque m_mode m_brake tcuState 
 
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xC350 ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xC300 ---- SIZE       4 ---
 Filling bytes inserted
  003A2400
-------- ROM-ADDRESS: 0xC354 ---- RAM-ADDRESS: 0x2400 ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xC304 ---- RAM-ADDRESS: 0x2400 ---- SIZE       8 ---
 Name of initialized Object : ccpStationId
  4543553030 303031
-------- ROM-ADDRESS: 0xC35C ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC30C ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xC35D ---- RAM-ADDRESS: 0x2409 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC30D ---- RAM-ADDRESS: 0x2409 ---- SIZE       1 ---
 Name of initialized Object : x1
  01
-------- ROM-ADDRESS: 0xC35E ---- RAM-ADDRESS: 0x240A ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC30E ---- RAM-ADDRESS: 0x240A ---- SIZE       1 ---
 Name of initialized Object : x2
  02
-------- ROM-ADDRESS: 0xC35F ---- RAM-ADDRESS: 0x240B ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC30F ---- RAM-ADDRESS: 0x240B ---- SIZE       1 ---
 Name of initialized Object : x3
  03
-------- ROM-ADDRESS: 0xC360 ---- RAM-ADDRESS: 0x240C ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC310 ---- RAM-ADDRESS: 0x240C ---- SIZE       1 ---
 Name of initialized Object : x4
  04
-------- ROM-ADDRESS: 0xC361 ---- RAM-ADDRESS: 0x240D ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC311 ---- RAM-ADDRESS: 0x240D ---- SIZE       1 ---
 Name of initialized Object : x5
  05
-------- ROM-ADDRESS: 0xC362 ---- RAM-ADDRESS: 0x240E ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC312 ---- RAM-ADDRESS: 0x240E ---- SIZE       1 ---
 Name of initialized Object : x6
  06
-------- ROM-ADDRESS: 0xC363 ---- RAM-ADDRESS: 0x240F ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC313 ---- RAM-ADDRESS: 0x240F ---- SIZE       1 ---
 Name of initialized Object : x7
  07
-------- ROM-ADDRESS: 0xC364 ---- RAM-ADDRESS: 0x2410 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC314 ---- RAM-ADDRESS: 0x2410 ---- SIZE       2 ---
 Name of initialized Object : pcmd
  265B
-------- ROM-ADDRESS: 0xC366 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC316 ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xC367 ---- RAM-ADDRESS: 0x2413 ---- SIZE       7 ---
+------- ROM-ADDRESS: 0xC317 ---- RAM-ADDRESS: 0x2413 ---- SIZE       7 ---
 Name of initialized Object : taskstartTable:1
  0203040506 0708
-------- ROM-ADDRESS: 0xC36E ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xC31E ---- SIZE       1 ---
 Filling bytes inserted
  00
-------- ROM-ADDRESS: 0xC36F ---- RAM-ADDRESS: 0x241B ---- SIZE      15 ---
+------- ROM-ADDRESS: 0xC31F ---- RAM-ADDRESS: 0x241B ---- SIZE      15 ---
 Name of initialized Object : taskperiodTable:1
  0A000A000A 0002000200 0A000A000A
-------- ROM-ADDRESS: 0xC37E ---- RAM-ADDRESS: 0x242A ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xC32E ---- RAM-ADDRESS: 0x242A ---- SIZE       8 ---
 Name of initialized Object : startmaskTable
  0102040810 204080
-------- ROM-ADDRESS: 0xC386 ---- RAM-ADDRESS: 0x2432 ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xC336 ---- RAM-ADDRESS: 0x2432 ---- SIZE       8 ---
 Name of initialized Object : taskrdyTable
  0102040810 204080
-------- ROM-ADDRESS: 0xC38E ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xC33E ---- SIZE       4 ---
 Filling bytes inserted
  01003C00
-------- ROM-ADDRESS: 0xC392 ---- RAM-ADDRESS: 0x3C00 ---- SIZE     256 ---
+------- ROM-ADDRESS: 0xC342 ---- RAM-ADDRESS: 0x3C00 ---- SIZE     256 ---
 Name of initialized Object : ccpCalBuffer
  0101000FA0 157C0BB807 D00000012C
  0258035203 20012C00B4 0000000000
@@ -2094,7 +2084,7 @@ Name of initialized Object : ccpCalBuffer
  0000000000 0000000000 0000000000
  0000000000 0000000000 0000000000
  00
-------- ROM-ADDRESS: 0xC492 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC442 ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -2215,9 +2205,6 @@ motorCtl                  USES STRING.out.of.range...1 printk pidError pidCalc
                                 duty do_ctlDuty STRING.duty.out.of.range...2 
                                 STRING.duty.out.of.range...3 do_motorStop pid 
 DFlashmemorycopy          USES _LINC ccpCalBuffer Trans memorycopy 
-early_selfDiagnose        USES readSpeed speed atdChannel adValue 
-                                STRING.please.check.speed.s.1 STRING.please.check.gear.se.2 adVoltage 
-                                STRING.battery.voltage.too..3 printk 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -2275,21 +2262,7 @@ DEPENDENCY TREE
  |  |     +- sendSCI0            
  |  |          
  |  +- early_selfDiagnose  
- |  |  | 
- |  |  +- readSpeed           
- |  |  |  | 
- |  |  |  +- _LDIVU              
- |  |  |  |  | 
- |  |  |  |  +- _lDivMod            
- |  |  |  |       
- |  |  |  +- _LSHL               
- |  |  |       
- |  |  +- atdChannel          
- |  |  |  | 
- |  |  |  +- _CASE_CHECKED_BYTE  
- |  |  |       
- |  |  +- printk               (see above)
- |  |     
+ |  |    
  |  +- reportError         
  |  |    
  |  +- schUpdate           
@@ -2316,10 +2289,18 @@ DEPENDENCY TREE
  |     |     |    
  |     |     +- InitMSCAN0           (see above)
  |     |        
- |     +- readSpeed            (see above)
- |     |  
- |     +- atdChannel           (see above)
- |     |  
+ |     +- readSpeed           
+ |     |  | 
+ |     |  +- _LDIVU              
+ |     |  |  | 
+ |     |  |  +- _lDivMod            
+ |     |  |       
+ |     |  +- _LSHL               
+ |     |       
+ |     +- atdChannel          
+ |     |  | 
+ |     |  +- _CASE_CHECKED_BYTE  
+ |     |       
  |     +- motorCtl            
  |     |  | 
  |     |  +- printk               (see above)
@@ -2481,5 +2462,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 13
-Total size of all blocks to be downloaded: 6238
+Total size of all blocks to be downloaded: 6093
 

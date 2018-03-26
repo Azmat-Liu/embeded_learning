@@ -66,7 +66,6 @@ void sciCmd_Decode(void)
 ***********************************************************************/
 
 int m_speed,m_torque,m_mode,m_brake;
-int state;
 
 const int Gear1_DefaTorqTab[25]={
 		6400,6400,6400,6400,6400,6400,6400,6400,6400,6400,
@@ -95,21 +94,40 @@ int getTorqFromTab(int var,const int * tab,int offset)
 	rtn = *(tab+p_at);
 	return rtn;
 }
-void stateCheck(void)
+
+struct CONDITION
 {
-	if(GEAR1){    //&& SOC >30 && FORWARD
+  byte vec_state;
+  byte sw_phase;
+  byte req_state;
+}tcuState;
+void ask4operateCondition(void)
+{
+	if(GEAR1 && 	tcuState.sw_phase == 0){    //&& SOC >30 && FORWARD
 		if(m_speed >= Trans.mspeed_up && 
 		m_torque - getTorqFromTab(m_speed,Gear1_DefaTorqTab,3000) <= 
 		getTorqFromTab(m_speed,Gear1_TorqLimitTab,3000))
-			state=1;
+		{
+		  tcuState.vec_state  = 1;
+			tcuState.sw_phase   = 0;
+			tcuState.req_state  = 255; 
+		}
 	}
-	if(GEAR2){
+	if(GEAR2 && tcuState.sw_phase == 0){
 		if(m_speed <= Trans.mspeed_dn && 
 		m_torque - getTorqFromTab(m_speed,Gear2_DefaTorqTab,0) <= 
 		getTorqFromTab(m_speed,Gear2_TorqLimitTab,0))
-			state=4;
+		{
+		  tcuState.vec_state  = 2;
+			tcuState.sw_phase   = 0;
+			tcuState.req_state  = 255; 
+		}
 		if(m_speed <= Trans.mspeed_dnlimit)
-			state=5;
+		{
+		  tcuState.vec_state  = 4;
+			tcuState.sw_phase   = 0;
+			tcuState.req_state  = 255;
+		}
 	}
 	if(GEAR0){
 		;//check_t(a);
@@ -117,7 +135,37 @@ void stateCheck(void)
 
 }
 
-
-
-
-
+void up_process(void)
+{
+  if(tcuState.vec_state == 1)
+  {
+    if(tcuState.sw_phase == 0)
+    {
+      if(adValue >= Trans.adTarget_upoff)
+        pwm = Trans.up1;
+      else
+        tcuState.sw_phase = 1;
+    }
+    if(tcuState.sw_phase == 1)
+    {
+      if(adValue >= Trans.adTarget_upsync)
+        pwm = Trans.up2;
+      else
+        tcuState.sw_phase = 2;
+    }
+    if(tcuState.sw_phase == 2)
+    {
+      if(adValue >= Trans.adTarget_upon)
+        pwm = Trans.up3;
+      else
+        tcuState.sw_phase = 3;
+    }
+    if(tcuState.sw_phase == 3)
+    {
+      if(adValue >= Trans.adTarget_upend)
+        pwm = Trans.up4;
+      else
+        tcuState.sw_phase = 1;
+    }
+  }
+}

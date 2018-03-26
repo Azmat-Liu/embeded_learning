@@ -16,12 +16,15 @@ struct Transmission_Tags
   word mspeed_dn;
   word mspeed_dnlimit;
   word mspeed_dnreserve;
+  
   word adTarget_upoff;
   word adTarget_upsync;
   word adTarget_upon;
+  word adTarget_upend;
   word adTarget_dnoff;
   word adTarget_dnsync;
   word adTarget_dnon;
+  word adTarget_dnend;
 };
 
 extern word ccptest;
