@@ -24,3 +24,5 @@ ARM上的链接库文件路径不同，导致找不到文件，可以用gcc?-sta
 通过右键历史版本后点击revert this commit可以回退到该版本
 flash_erase /dev/block off cnt 表示擦除从偏移地址off开始擦除/dev/block的cnt个块（但注意当off和cnt都是0时表示擦除整个/dev/block）
 udevd :error getting socket:Address family not supported by protocol以及后面的许多错误都与没有配置“CONFIG_UNIX”有关，即“Unix domain sockets”即使在嵌入式系统很多都用不联网的情况下最好也要编译进内核
+yocto bitbake 的包可以通过：bitbake -s | grep <name> 来列出，查看包的安装路径可以通过：bitbake -e <packname> | grep "^WORKDIR",查找下载路径可以
+使用：bitbake -e <packname> | grep "^SRCURI"
