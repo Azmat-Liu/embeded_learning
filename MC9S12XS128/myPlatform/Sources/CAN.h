@@ -27,7 +27,7 @@
   //CAN总线ID
   #define CAN0_RX_First_ID     0x403   //CAN0接收第一帧ID   
   #define CAN0_RX_Second_ID    0x469   //CAN0接收第二帧ID 
-  #define CAN0_TX_ID     0x10F     //CAN0发送ID
+  #define CAN0_TX_ID     0x10F81099     //CAN0发送ID
   //用以与上位机通信
   //#define CCP_DTO_ID        0x10E           /* CAN identifier ECU -> Master */
   //#define CCP_CRO_ID        0x10D           /* CAN identifier Master -> ECU */

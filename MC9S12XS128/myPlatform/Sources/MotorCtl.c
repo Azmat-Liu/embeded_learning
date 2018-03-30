@@ -7,8 +7,8 @@
 *  作者:  Azmat
 *  日期:  2017.12.15
 ***********************************************************************/
-int pidError;   //偏差
-char duty;
+static int pidError;   //偏差
+static char duty;
 byte motorCtl(word target,word measure,byte accuracy)
 {
   char range;

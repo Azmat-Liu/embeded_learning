@@ -95,12 +95,20 @@ int getTorqFromTab(int var,const int * tab,int offset)
 	return rtn;
 }
 
-struct CONDITION
+struct CONDITIONS
 {
   byte vec_state;
   byte sw_phase;
   byte req_state;
 }tcuState;
+
+struct SHIFTING_CTL_TAG
+{
+  byte direction;
+  byte pwm_duty;
+  word current;
+}g_ctl;
+
 void ask4operateCondition(void)
 {
 	if(GEAR1 && 	tcuState.sw_phase == 0){    //&& SOC >30 && FORWARD
@@ -141,30 +149,36 @@ void up_process(void)
   {
     if(tcuState.sw_phase == 0)
     {
+      g_ctl.direction = 1;   //direction
       if(adValue >= Trans.adTarget_upoff)
-        pwm = Trans.up1;
+      {
+        g_ctl.pwm_duty = 1;
+      }
       else
         tcuState.sw_phase = 1;
     }
     if(tcuState.sw_phase == 1)
     {
       if(adValue >= Trans.adTarget_upsync)
-        pwm = Trans.up2;
-      else
+      {
+        g_ctl.pwm_duty = 1;
+      }      else
         tcuState.sw_phase = 2;
     }
     if(tcuState.sw_phase == 2)
     {
       if(adValue >= Trans.adTarget_upon)
-        pwm = Trans.up3;
-      else
+      {
+        g_ctl.pwm_duty = 1;
+      }      else
         tcuState.sw_phase = 3;
     }
     if(tcuState.sw_phase == 3)
     {
       if(adValue >= Trans.adTarget_upend)
-        pwm = Trans.up4;
-      else
+      {
+        g_ctl.pwm_duty = 1;
+      }      else
         tcuState.sw_phase = 1;
     }
   }
